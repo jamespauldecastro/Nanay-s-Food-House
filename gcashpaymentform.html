@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gcash Payment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e5e5e5;
+        }
+
+        nav {
+            background-color: #1500ff;
+            height: 25vh;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 500px;
+            height: 600px;
+            top: 12.5vh;
+        }
+
+        form .merchant {
+            display: flex;
+        }
+
+        form .amountDue {
+            display: flex;
+        }
+
+        form .mobile-number-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <nav style="display: flex; justify-content: center; padding: 10px;">
+        <div class="gcash">
+            <img src="https://asset.brandfetch.io/idU5cKFAqi/idyPwQeRSW.png" style="height: 70px;" alt="">
+        </div>
+    </nav>
+
+    <main>
+        <form action="" style="background-color: white; border-radius: 5px;" onsubmit="validateAndNavigate(); return false;">
+            <div class="merchant">
+                <p
+                    style="padding: 30px; width: 200px; font-size: 24px; height: 50px; display: flex; justify-content: flex-start; align-items: center;  color: #6b6b6b;">
+                    Merchant</p>
+                <p style="font-size: 24px; display: flex; align-items: center;">Nanay's Food House</p>
+            </div>
+            <div class="amountDue">
+                <p
+                    style="padding: 30px; width: 200px; font-size: 24px; height: 50px; display: flex; justify-content: flex-start; align-items: center; color: #6b6b6b;">
+                    Amount Due</p>
+                <p style="font-size: 24px; display: flex; align-items: center; color: #1500ff;" id="amount-due">PHP 100.00</p>
+            </div>
+            <p
+                style="display: flex; justify-content: center; align-items: center; height: 80px; width: 100%; font-weight: bold;">
+                Login to pay with GCash</p>
+            <div class="mobile-number-container"
+                style="display: flex; justify-content: center; align-items: center; height: fit-content; width: 100%;">
+                <label for="mobile-number" style="font-size: 20px; margin-right: 110px; color: #6b6b6b;">Mobile
+                    number</label>
+                <input type="text" id="mobile-number" class="mobile-input" placeholder="09xxxxxxxxx" pattern="09\d{9}"
+                    style=" height: 50px; width: 260px; padding: 5px; font-size: 30px; border: none; border-bottom: 2px solid gray;"
+                    required>
+            </div>
+            <button
+                style="align-self: center; width: 300px; height: 50px; background-color: #1500ff; color: white; border: none; font-size: 24px; font-weight: bold; border-radius: 25px; margin-top: 50px;"
+                >NEXT</button>
+        </form>
+    </main>
+
+    <script>
+        function validateAndNavigate() {
+            var input = document.getElementById('mobile-number');
+            if (input.checkValidity()) {
+                window.location.href = 'gcashaccountcode.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+        const totalValue = localStorage.getItem('cartTotal') || '0.00';
+        document.getElementById('amount-due').textContent = `PHP ${totalValue}`;
+
+    });
+    </script>
+</body>
+
+</html>

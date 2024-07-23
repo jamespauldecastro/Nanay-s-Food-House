@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/nanayslogo.png" type="image/x-icon">
+    <style>
+        body {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            background-color: #2F1D18;
+            overflow-x: hidden;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        main {
+            display: flex;
+            margin-top: 15vh;
+            height: 85vh;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            width: 100%;
+            gap: 120px;
+            flex-wrap: wrap;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .name-and-email {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .name-and-email input {
+            width: 500px;
+            padding: 10px;
+            background-color: transparent;
+            border-bottom: 2px solid white;
+            color: white;
+            font-size: 1em;
+        }
+
+        .pass-and-confirm-pass {
+            display: flex;
+            margin-bottom: 50px;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .pass-and-confirm-pass input {
+            width: 225px;
+            padding: 10px;
+            border-bottom: 2px solid white;
+            color: white;
+            font-size: 1em;
+        }
+
+        ::placeholder {
+            color: white;
+            font-size: 1rem;
+        }
+
+        .create-account-button {
+            height: 50px;
+            background-color: #FEB300;
+            border: none;
+            color: white;
+            font-weight: bold;
+            width: 100%;
+            font-size: 1.5em;
+            border-radius: 25px;
+        }
+
+        @media (max-width: 600px) {
+            .name-and-email input {
+                width: 350px;
+            }
+
+            .pass-and-confirm-pass{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                gap: 25px;
+            }
+
+            .create-account-button {
+                width: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="images/nanayslogo.png" alt="" style="height: 100px; width: 100px;"></a>
+        </div>
+        <ul id="menuList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="service.html ">Services</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <div class="search-cart">
+                <button class="cart-btn" id="cart-btn">🛒</button>
+            </div>
+            <li><a href="sign-in.html" style="color: #FEB300;">Sign In</a></li>
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </nav>
+
+
+
+
+    <!-- cart -->
+    <section class="cart">
+        <div class="cart-container">
+            <button id="close-cart"><img src="images/arrow.png" alt=""></button>
+            <h2>Your Food Cart</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <div class="subtotalDeliveryfeeTotal">
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Subtotal:</p>
+                    <p id="cart-subtotal">0</p>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Delivery Fee:</p>
+                    <p id="cart-delivery-fee">0</p>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Total:</p>
+                    <p id="cart-total">0</p>
+                </div>
+                <!-- <button id="clear-cart">Clear Cart</button> -->
+                <button id="proceed-to-checkout">PROCEED TO CHECKOUT</button>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <form id="create-account-form" class="create-account">
+            <h1 style="font-size: 2.5em; color: #FEB300;">CREATE ACCOUNT</h1>
+            <div class="name-and-email">
+                <input type="text" id="full-name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <div class="pass-and-confirm-pass">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                </div>
+                <button type="button" class="create-account-button" onclick="createAccount()">CREATE ACCOUNT</button>
+                <p style="color: white;">By registering/signing in, you agree to Nanay's Food House's</p>
+                <div style="display: flex; gap: 5px;">
+                    <p style="color: #FEB300;">Privacy Notice</p>
+                    <p style="color: white;">and</p>
+                    <p style="color: #FEB300;">Terms and Conditions</p>
+                </div>
+            </div>
+        </form>
+    </main>
+    
+    <script>
+        function createAccount() {
+            const fullName = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+    
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+    
+            if (!fullName || !email || !password) {
+                alert('Please fill out all fields.');
+                return;
+            }
+    
+            // Manual password validation
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long.');
+                return;
+            }
+    
+            let hasUppercase = false;
+            let hasLowercase = false;
+            let hasNumber = false;
+    
+            for (let i = 0; i < password.length; i++) {
+                const char = password.charAt(i);
+                if (char >= 'A' && char <= 'Z') {
+                    hasUppercase = true;
+                } else if (char >= 'a' && char <= 'z') {
+                    hasLowercase = true;
+                } else if (char >= '0' && char <= '9') {
+                    hasNumber = true;
+                }
+            }
+    
+            if (!hasUppercase) {
+                alert('Password must contain at least one uppercase letter.');
+                return;
+            }
+    
+            if (!hasLowercase) {
+                alert('Password must contain at least one lowercase letter.');
+                return;
+            }
+    
+            if (!hasNumber) {
+                alert('Password must contain at least one number.');
+                return;
+            }
+    
+            // Create an object to store in local storage
+            const account = {
+                fullName: fullName,
+                email: email,
+                password: password // Note: Storing plain text passwords in local storage is not secure
+            };
+    
+            // Check if email already exists
+            let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+            if (accounts.some(acc => acc.email === email)) {
+                alert('Email already exists.');
+                return;
+            }
+    
+            // Save the new account to local storage
+            accounts.push(account);
+            localStorage.setItem('accounts', JSON.stringify(accounts));
+    
+            // Notify the user
+            alert('Account created successfully.');
+    
+            // Redirect to sign-in page
+            window.location.href = 'sign-in.html';
+        }
+    </script>
+    
+        
+
+    <section class="floating-checkout" style="display: none;">
+        <div class="floating-checkout-container">
+            <button id="close-checkout"><img src="images/arrow.png" alt=""></button>
+            <!-- Close button for checkout form -->
+            <h2>Order Summary</h2>
+            <ul id="cart-items-checkout">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <p style="display: none;">Subtotal: <span id="cart-subtotal-checkout">$0</span></p>
+            <p style="display: none;">Delivery Fee: <span id="cart-delivery-fee-checkout">$50</span></p>
+
+            <div class="total">
+                <p>Total:</p>
+                <span id="cart-total-checkout">$0</span>
+            </div>
+
+            <form id="checkout-form">
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+
+                <input type="text" id="address" name="address" placeholder="Complete Address" required>
+
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+
+                <select id="payment-method" name="payment-method" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="cash">Cash on Delivery</option>
+                    <option value="gcash">GCash</option>
+                </select>
+
+                <textarea id="remarks" name="remarks" placeholder="Remarks"></textarea>
+
+                <button type="submit">
+                    <p>PLACE ORDER</p>
+                </button>
+            </form>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-container-1">
+            <div class="inside-container-1">
+                <img src="images/nanayslogo.png" alt="">
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">SOCIAL MEDIA</p>
+                <div class="social-media-icons">
+                    <a href="https://x.com/NanayH76438?t=vYd_kaAhh5VGLm5ppjs58Q&s=07"><img src="images/twitter.png" alt=""></a>
+                    <a href="https://web.facebook.com/profile.php?id=61555533298121"><img src="images/facebook.png" alt=""></a>
+                    <a href="https://www.instagram.com/nanaysfoodhouse/?igsh=MXRkeW13YWQ3MWNtMA%3D%3D"><img src="images/instagram.png" alt=""></a>
+                </div>
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">BUSINESS HOURS</p>
+                <p id="links">Monday - Friday: 9 AM - 9 PM</p>
+                <p id="links">Saturday - Sunday: 10 AM - 10 PM</p>
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">INFORMATION</p>
+                <p id="links"><a href="">Terms</a></p>
+                <p id="links"><a href="">Privacy</a></p>
+                <p id="links"><a href="">Policy</a></p>
+                <p id="links"><a href="">FAQS</a></p>
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">QUICK LINKS</p>
+                <p id="links"><a href="index.html">Home</a></p>
+                <p id="links"><a href="menu.html">Menu</a></p>
+                <p id="links"><a href="service.html">Service</a></p>
+                <p id="links"><a href="about-us.html">About Us</a></p>
+                <p id="links"><a href="contact.html">Contact</a></p>
+            </div>
+        </div>
+        <div class="footer-container-2">
+            <p>© 2024 Nanay's Food House. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/nanayslogo.png" type="image/x-icon">
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: #2F1D18;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex-grow: 1;
+            margin-top: 15vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: fit-content;
+            width: 100%;
+            flex-wrap: wrap;
+            margin-bottom: 16vh;
+        }
+
+        main h1 {
+            font-family: "Quiapo Free", sans-serif;
+            font-size: 4em;
+            color: #FEB300;
+            text-shadow: 3px 3px black;
+        }
+
+        .services-container {
+            flex-grow: 1;
+            height: fit-content;
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: auto;
+        }
+
+        .services-container .service {
+            width: 45vh;
+            height: 60vh;
+            background-color: #4B1E13;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .services-container .service img {
+            height: 75px;
+            width: 75px;
+        }
+
+        .services-container .service h2 {
+            color: #FEB300;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .services-container .service p {
+            color: white;
+            text-align: center;
+            font-size: 25px;
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="images/nanayslogo.png" alt="" style="height: 100px; width: 100px;"></a>
+        </div>
+        <ul id="menuList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="service.html" style="color: #FEB300;">Services</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="sign-in.html">Sign In</a></li>
+            <div class="search-cart">
+                <button class="cart-btn" id="cart-btn">🛒</button>
+            </div>
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </nav>
+
+    <main>
+        <h1>OUR SERVICES</h1>
+        <div class="services-container">
+            <div class="service">
+                <img src="images/order-online.png" alt="">
+                <h2>ORDERING ONLINE</h2>
+                <p>Conveniently order your favorite dishes from our website and have them delivered straight to your
+                    door or ready for pickup</p>
+            </div>
+            <div class="service">
+                <img src="images/dine-in.png" alt="">
+                <h2>DINE-IN EXPERIENCE</h2>
+                <p>Visit our cozy restaurant to enjoy a warm and welcoming atmosphere while savoring our home-cooked
+                    meals</p>
+            </div>
+            <div class="service">
+                <img src="images/special-menu.png" alt="">
+                <h2>SPECIAL MENU REQUEST</h2>
+                <p>Planning a special event or craving something unique? Contact us to request customized menu tailored
+                    to your needs.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container-1">
+            <div class="inside-container-1">
+                <img src="images/nanayslogo.png" alt="">
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">SOCIAL MEDIA</p>
+                <div class="social-media-icons">
+                    <a href="https://x.com/NanayH76438?t=vYd_kaAhh5VGLm5ppjs58Q&s=07"><img src="images/twitter.png" alt=""></a>
+                    <a href="https://web.facebook.com/profile.php?id=61555533298121"><img src="images/facebook.png" alt=""></a>
+                    <a href="https://www.instagram.com/nanaysfoodhouse/?igsh=MXRkeW13YWQ3MWNtMA%3D%3D"><img src="images/instagram.png" alt=""></a>
+                </div>
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">BUSINESS HOURS</p>
+                <p id="links">Monday - Friday: 9 AM - 9 PM</p>
+                <p id="links">Saturday - Sunday: 10 AM - 10 PM</p>
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">INFORMATION</p>
+                <p id="links"><a href="">Terms</a></p>
+                <p id="links"><a href="">Privacy</a></p>
+                <p id="links"><a href="">Policy</a></p>
+                <p id="links"><a href="">FAQS</a></p>
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">QUICK LINKS</p>
+                <p id="links"><a href="index.html">Home</a></p>
+                <p id="links"><a href="menu.html">Menu</a></p>
+                <p id="links"><a href="service.html">Service</a></p>
+                <p id="links"><a href="about-us.html">About Us</a></p>
+                <p id="links"><a href="contact.html">Contact</a></p>
+            </div>
+        </div>
+        <div class="footer-container-2">
+            <p>© 2024 Nanay's Food House. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- cart -->
+    <section class="cart">
+        <div class="cart-container">
+            <button id="close-cart"><img src="images/arrow.png" alt=""></button>
+            <h2>Your Food Cart</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <div class="subtotalDeliveryfeeTotal">
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Subtotal:</p>
+                    <p id="cart-subtotal">0</p>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Delivery Fee:</p>
+                    <p id="cart-delivery-fee">0</p>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Total:</p>
+                    <p id="cart-total">0</p>
+                </div>
+                <!-- <button id="clear-cart">Clear Cart</button> -->
+                <button id="proceed-to-checkout">PROCEED TO CHECKOUT</button>
+            </div>
+        </div>
+    </section>
+    <section class="floating-checkout" style="display: none;">
+        <div class="floating-checkout-container">
+            <button id="close-checkout"><img src="images/arrow.png" alt=""></button>
+            <!-- Close button for checkout form -->
+            <h2>Order Summary</h2>
+            <ul id="cart-items-checkout">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <p style="display: none;">Subtotal: <span id="cart-subtotal-checkout">$0</span></p>
+            <p style="display: none;">Delivery Fee: <span id="cart-delivery-fee-checkout">$50</span></p>
+
+            <div class="total">
+                <p>Total:</p>
+                <span id="cart-total-checkout">$0</span>
+            </div>
+
+            <form id="checkout-form">
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+
+                <input type="text" id="address" name="address" placeholder="Complete Address" required>
+
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+
+                <select id="payment-method" name="payment-method" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="cash">Cash on Delivery</option>
+                    <option value="gcash">GCash</option>
+                </select>
+
+                <textarea id="remarks" name="remarks" placeholder="Remarks"></textarea>
+
+                <button type="submit">
+                    <p>PLACE ORDER</p>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

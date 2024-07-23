@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/nanayslogo.png" type="image/x-icon">
+    <style>
+        body {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            background-color: #42221B;
+            overflow-x: hidden;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        main {
+            display: flex;
+            margin-top: 15vh;
+            height: fit-content;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .buttons {
+            display: flex;
+            position: fixed;
+            background-color: #FDEBCF;
+            height: fit-content;
+            padding: 5px 50px 5px 50px;
+            gap: 5px;
+            margin-top: 15vh;
+            border-radius: 25px;
+            border: 3px solid black;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .buttons button:hover {
+            cursor: pointer;
+        }
+
+        .buttons button {
+            height: 35px;
+            border: none;
+            width: 225px;
+            font-family: "Quiapo Free", sans-serif;
+            font-size: 20px;
+            color: #621D0A;
+            background-color: #FDF5DE;
+            text-shadow: .5px .5px black;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .buttons button:hover {
+            background-color: #4B1E13;
+            color: #E9B11A;
+        }
+
+        section {
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            align-items: center;
+            margin-bottom: 10vh;
+        }
+
+        .inner-menus {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin-top: 200px;
+            height: fit-content;
+            gap: 20px;
+            width: 90vw;
+        }
+
+        .menus .menu-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            border: 3px solid black;
+            background-color: #EAD9C5;
+            padding: 3px;
+            height: 130px;
+            width: 600px;
+            max-width: 500px;
+            min-width: 470px;
+        }
+
+        .menu-container .image img {
+            height: 118px;
+            width: 120px;
+        }
+
+        .menus .menu-container .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-left: 20px;
+        }
+
+        .menu-container .text .inner-text h2 {
+            font-family: "Quiapo Free", sans-serif;
+            color: #42221B;
+        }
+
+        .price-and-add-to-cart {
+            display: flex;
+            flex-direction: row;
+            align-self: flex-end;
+            gap: 10px;
+        }
+
+        .price-and-add-to-cart button {
+            border: none;
+            background-color: #4B1E13;
+            color: white;
+            width: 120px;
+            height: 30px;
+        }
+
+        .price-and-add-to-cart p {
+            align-self: center;
+            color: #4B1E13;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            cursor: pointer;
+            scale: 1.01;
+            transition: 0.3s;
+        }
+
+        @media(max-width: 735px) {
+
+            .buttons button {
+                height: 35px;
+                border: none;
+                width: 130px;
+                font-family: "Quiapo Free", sans-serif;
+                font-size: 15px;
+                color: #621D0A;
+                background-color: #FDF5DE;
+                text-shadow: .5px .5px black;
+            }
+        }
+
+        @media(max-width: 660px) {
+
+            .buttons button {
+                width: 100px;
+                font-size: 12px;
+            }
+        }
+
+        @media(max-width: 535px) {
+
+            .buttons button {
+                width: 80px;
+            }
+        }
+
+        @media(max-width: 455px) {
+
+            .buttons button {
+                width: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #42221B !important;">
+    <nav style="background-color: #42221B !important;">
+        <div class="logo">
+            <a href="index.html"><img src="images/nanayslogo.png" alt="" style="height: 100px; width: 100px;"></a>
+        </div>
+        <ul id="menuList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" style="color: #FEB300;">Menu</a></li>
+            <li><a href="service.html ">Services</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <div class="search-cart">
+                <button class="search-button" onclick="scrollToSection()"><i class="fa fa-search" style="color: white;"></i></button>
+                <input type="text" placeholder="Search" style="width: 250px; color: white; font-size: 16px;">
+                <button class="cart-btn" id="cart-btn">🛒</button>
+            </div>
+            <li><a href="sign-in.html">Sign In</a></li>
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </nav>
+
+    <div class="buttons">
+        <button onclick="document.getElementById('sizzling').scrollIntoView({ behavior: 'smooth' });">
+            SIZZLING
+        </button>
+        <button onclick="document.getElementById('dishes-with-egg').scrollIntoView({ behavior: 'smooth' });">
+            DISHES WITH EGG
+        </button>
+        <button onclick="document.getElementById('a-la-carte').scrollIntoView({ behavior: 'smooth' });">
+            A LA CARTE
+        </button>
+        <button onclick="document.getElementById('drinks').scrollIntoView({ behavior: 'smooth' });">
+            DRINKS
+        </button>
+    </div>
+
+
+    <section id="sizzling" class="menus">
+        <div class="inner-menus">
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/sizzling-sisig (1).jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>SIZZLING SISIG WITH RICE</h2>
+                        <p>Crispy pork bits, a mix of tender meat and delightfully scorched edges, mingle with chopped
+                            onions and chilies.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 105</p>
+                        <button class="add-to-cart" data-id="1" data-name="Sizzling Sisig with Rice" data-price="105"
+                            data-image="images/sizzling-sisig (1).jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/sizzling-liempo.webp" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>SIZZLING LIEMPO WITH RICE</h2>
+                        <p>Sizzling Liempo is a popular Filipino dish consisting of grilled pork belly marinated in a
+                            flavorful blend of spices. </p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 115</p>
+                        <button class="add-to-cart" data-id="2" data-name="Sizzling Liempo with Rice" data-price="115"
+                            data-image="images/sizzling-liempo.webp">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/SIZZLING-PORKCHOP.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>SIZZLING PORKCHOP WITH RICE</h2>
+                        <p>Sizzling pork chop is a juicy pork taste is complemented by any additional seasonings,
+                            creating a delicious, hearty meal.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <div class="price-and-add-to-cart">
+                            <p>₱ 110</p>
+                            <button class="add-to-cart" data-id="3" data-name="Sizzling Porkchop with Rice"
+                                data-price="110" data-image="images/SIZZLING-PORKCHOP.jpg">Add to Cart</button>
+                            <div id="notification" class="notification"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/sizzling-chicken.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>SIZZLING CHICKEN WITH RICE</h2>
+                        <p>Sizzling chicken dish delivers an incredibly flavorful eating experience. The juicy chicken
+                            with complementary ingredients</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 115</p>
+                        <button class="add-to-cart" data-id="4" data-name="Sizzling Chicken with Rice" data-price="115"
+                            data-image="images/sizzling-chicken.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/sizzling-pusit.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>SIZZLING PUSIT WITH RICE</h2>
+                        <p>Sizzling pusit features a bold, complex taste - chewy yet tender, briny yet savory, and with
+                            a touch of sweetness and char.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 105</p>
+                        <button class="add-to-cart" data-id="5" data-name="Sizzling Chicken with Rice" data-price="105"
+                            data-image="images/sizzling-pusit.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dishes-with-egg" class="menus">
+        <div class="inner-menus">
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/porkchop silog.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>PORKCHOP SILOG</h2>
+                        <p>Porkchop silog is a harmonious blend of savory pork, fragrant garlic, creamy egg, and
+                            optional salty-sweet sauce.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 110</p>
+                        <button class="add-to-cart" data-id="6" data-name="Porkchop Silog" data-price="110"
+                            data-image="images/porkchop silog.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/spam silog.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>SPAM SILOG</h2>
+                        <p>The crispy Spam, fluffy garlic rice, and runny egg create a wonderfully textural and
+                            comforting meal.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 96</p>
+                        <button class="add-to-cart" data-id="7" data-name="Spam Silog" data-price="96"
+                            data-image="images/spam silog.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/bacon silog.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>BACON SILOG</h2>
+                        <p>Bacon silog is a flavor-packed Filipino breakfast that balances salty, savory, and slightly
+                            sweet notes.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 96</p>
+                        <button class="add-to-cart" data-id="8" data-name="Bacon Silog" data-price="96"
+                            data-image="images/bacon silog.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/bangus silog.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>BANGUS SILOG</h2>
+                        <p>Bangus silog is a flavorful Filipino breakfast featuring the centerpiece of soft, buttery
+                            bangus.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 99</p>
+                        <button class="add-to-cart" data-id="9" data-name="Bangus Silog" data-price="99"
+                            data-image="images/bangus silog.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/tocino silog.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>TOCINO SILOG</h2>
+                        <p>Tocino Silog is a caramelized, tender tocino, fluffy garlic rice, and creamy egg create a
+                            wonderfully textural and comforting meal.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 96</p>
+                        <button class="add-to-cart" data-id="10" data-name="Tocino Silog" data-price="96"
+                            data-image="images/tocino silog.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/hotdog silog.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>HOTDOG SILOG</h2>
+                        <p>A crispy, assertive hotdog, fluffy garlic rice, and creamy egg create a wonderfully textural
+                            and comforting meal.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 90</p>
+                        <button class="add-to-cart" data-id="11" data-name="Hotdog Silog" data-price="90"
+                            data-image="images/hotdog silog.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/chicken fingers silog.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>CHICKEN FINGERS SILOG</h2>
+                        <p>The crispy exterior, tender interior, and neutral garlic rice create a wonderful balance of
+                            textures and tastes.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 99</p>
+                        <button class="add-to-cart" data-id="12" data-name="Chicken Fingers Silog" data-price="99"
+                            data-image="images/chicken fingers silog.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/tapsilogg.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>TAPA SILOG</h2>
+                        <p>The tapa's concentrated savory taste is expertly balanced by the neutral garlic rice and
+                            creamy egg, creating a harmonious and comforting meal.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 115</p>
+                        <button class="add-to-cart" data-id="13" data-name="Tapa Silog" data-price="115"
+                            data-image="images/tapsilogg.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="a-la-carte" class="menus">
+        <div class="inner-menus">
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/ala carte sisig.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>SISIG A LA CARTE</h2>
+                        <p>The crispy pork, bright citrus and chili notes, and rich egg sauce create a deeply satisfying
+                            and craveable eating experience.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 135.00</p>
+                        <button class="add-to-cart" data-id="14" data-name="Sisig A La Carte" data-price="135.00"
+                            data-image="images/ala carte sisig.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/ala carte chicharon.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>CHICHARON A LA CARTE</h2>
+                        <p>The combination of shatteringly crisp crackling and rich, salty pork taste makes it an
+                            irresistible indulgence.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 139</p>
+                        <button class="add-to-cart" data-id="15" data-name="Chicharon A La Carte" data-price="139"
+                            data-image="images/ala carte chicharon.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/ala carte chicken fingers.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>Chicken Fingers A La Carte</h2>
+                        <p>The contrast of textures and the ability to customize the flavor profile make chicken fingers
+                            a crowd-pleasing option.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 129</p>
+                        <button class="add-to-cart" data-id="16" data-name="Chicken Fingers A La Carte" data-price="129"
+                            data-image="images/ala carte chicken fingers.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/ala carte tofu.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>TOFU A LA CARTE</h2>
+                        <p>Its neutral base and ability to absorb seasonings make it a highly versatile ingredient.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 115</p>
+                        <button class="add-to-cart" data-id="17" data-name="Tofu A La Carte" data-price="115"
+                            data-image="images/ala carte tofu.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/ala carte fries.png" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>FRIES A LA CARTE</h2>
+                        <p>The irresistible combination of crispy exterior, fluffy interior, and salty, seasoned potato
+                            goodness</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 85</p>
+                        <button class="add-to-cart" data-id="18" data-name="Fries A La Carte" data-price="85"
+                            data-image="images/ala carte fries.png">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/ala carte nachos.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>NACHOS A LA CARTE</h2>
+                        <p>Balance of salty, crispy chips; melty, gooey cheese; spicy, zesty toppings; and cool, creamy
+                            accompaniments - creating a truly craveable and satisfying dish.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 95</p>
+                        <button class="add-to-cart" data-id="19" data-name="Nachos A La Carte" data-price="95"
+                            data-image="images/ala carte nachos.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="drinks" class="menus">
+        <div class="inner-menus">
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/Beautiful Blue Lemonade Cocktail Recipe.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>Blue Lemonade</h2>
+                        <p>Classic tart and tangy lemonade flavor with subtle berry notes and a visually striking blue
+                            hue.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 30.00</p>
+                        <button class="add-to-cart" data-id="20" data-name="Blue Lemonade" data-price="30.00"
+                            data-image="images/Beautiful Blue Lemonade Cocktail Recipe.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/red tea.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>Red Iced Tea</h2>
+                        <p>Subtle sweetness, and cooling refreshment - creating a unique and memorable iced tea
+                            experience.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 30</p>
+                        <button class="add-to-cart" data-id="21" data-name="Red Iced Tea" data-price="30"
+                            data-image="images/red tea.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/cucumber juice.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>Cucumber Juice</h2>
+                        <p>Defined by its light, delicate, and hydrating qualities, making it a refreshing and
+                            nourishing beverage choice.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 35</p>
+                        <button class="add-to-cart" data-id="22" data-name="Cucumber Juice" data-price="35"
+                            data-image="images/cucumber juice.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/coke-zero.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>Coke Zero</h2>
+                        <p>Coca-Cola flavor profile but with zero calories and zero sugar, providing a refreshing,
+                            bubbly cola experience for those seeking a low-calorie option.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 70</p>
+                        <button class="add-to-cart" data-id="23" data-name="Coke Zero" data-price="70"
+                            data-image="images/coke-zero.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/royall.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>ROYAL</h2>
+                        <p> Nice balance between bold citrus flavor and refreshing carbonation, making it a satisfying
+                            and thirst-quenching beverage.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 70</p>
+                        <button class="add-to-cart" data-id="24" data-name="Royal" data-price="70"
+                            data-image="images/royall.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/lemon.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>LEMON</h2>
+                        <p>Delivers an exceptionally well-executed lemon flavor experience. It captures the essence of
+                            fresh. citrusy taste and lively carbonation.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 70</p>
+                        <button class="add-to-cart" data-id="25" data-name="Lemon" data-price="70"
+                            data-image="images/lemon.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <div class="image">
+                    <img src="images/rootbeer.jpg" alt="">
+                </div>
+                <div class="text">
+                    <div class="inner-text">
+                        <h2>ROOT BEER</h2>
+                        <p>The balance of sweetness, creaminess, and herbal/spice notes creates a truly enjoyable
+                            drinking experience.</p>
+                    </div>
+                    <div class="price-and-add-to-cart">
+                        <p>₱ 70</p>
+                        <button class="add-to-cart" data-id="26" data-name="Root Beer" data-price="70"
+                            data-image="images/rootbeer.jpg">Add to Cart</button>
+                        <div id="notification" class="notification"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- cart -->
+    <section class="cart">
+        <div class="cart-container">
+            <button id="close-cart"><img src="images/arrow.png" alt=""></button>
+            <h2>Your Food Cart</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <div class="subtotalDeliveryfeeTotal">
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Subtotal:</p>
+                    <p id="cart-subtotal">0</p>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Delivery Fee:</p>
+                    <p id="cart-delivery-fee">0</p>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <p>Total:</p>
+                    <p id="cart-total">0</p>
+                </div>
+                <!-- <button id="clear-cart">Clear Cart</button> -->
+                <button id="proceed-to-checkout">PROCEED TO CHECKOUT</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="floating-checkout" style="display: none;">
+        <div class="floating-checkout-container">
+            <button id="close-checkout"><img src="images/arrow.png" alt=""></button>
+            <!-- Close button for checkout form -->
+            <h2>Order Summary</h2>
+            <ul id="cart-items-checkout">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <p style="display: none;">Subtotal: <span id="cart-subtotal-checkout">$0</span></p>
+            <p style="display: none;">Delivery Fee: <span id="cart-delivery-fee-checkout">$50</span></p>
+
+            <div class="total">
+                <p>Total:</p>
+                <span id="cart-total-checkout">$0</span>
+            </div>
+
+            <form id="checkout-form">
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+
+                <input type="text" id="address" name="address" placeholder="Complete Address" required>
+
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+
+                <select id="payment-method" name="payment-method" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="cash">Cash on Delivery</option>
+                    <option value="gcash">GCash</option>
+                </select>
+
+                <textarea id="remarks" name="remarks" placeholder="Remarks"></textarea>
+
+                <button type="submit">
+                    <p>PLACE ORDER</p>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container-1">
+            <div class="inside-container-1">
+                <img src="images/nanayslogo.png" alt="">
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">SOCIAL MEDIA</p>
+                <div class="social-media-icons">
+                    <a href="https://x.com/NanayH76438?t=vYd_kaAhh5VGLm5ppjs58Q&s=07"><img src="images/twitter.png" alt=""></a>
+                    <a href="https://web.facebook.com/profile.php?id=61555533298121"><img src="images/facebook.png" alt=""></a>
+                    <a href="https://www.instagram.com/nanaysfoodhouse/?igsh=MXRkeW13YWQ3MWNtMA%3D%3D"><img src="images/instagram.png" alt=""></a>
+                </div>
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">BUSINESS HOURS</p>
+                <p id="links">Monday - Friday: 9 AM - 9 PM</p>
+                <p id="links">Saturday - Sunday: 10 AM - 10 PM</p>
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">INFORMATION</p>
+                <p id="links"><a href="">Terms</a></p>
+                <p id="links"><a href="">Privacy</a></p>
+                <p id="links"><a href="">Policy</a></p>
+                <p id="links"><a href="">FAQS</a></p>
+            </div>
+            <div class="inside-container-1 container-1-text">
+                <p id="tag">QUICK LINKS</p>
+                <p id="links"><a href="index.html">Home</a></p>
+                <p id="links"><a href="menu.html">Menu</a></p>
+                <p id="links"><a href="service.html">Service</a></p>
+                <p id="links"><a href="about-us.html">About Us</a></p>
+                <p id="links"><a href="contact.html">Contact</a></p>
+            </div>
+        </div>
+        <div class="footer-container-2">
+            <p>© 2024 Nanay's Food House. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection() {
+            const searchInput = document.querySelector('input[type="text"][placeholder="Search"]');
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const sections = document.querySelectorAll('section.menus');
+            let sectionFound = false;
+
+            // Define mappings for special search terms
+            const specialMappings = {
+                'a-la-carte': ['ala carte', 'a la carte', 'carte'],
+                'dishes-with-egg': ['egg', 'dishes', 'dishes with egg']
+            };
+
+
+            // Check if search term matches a special term
+            for (const [sectionID, keywords] of Object.entries(specialMappings)) {
+                if (keywords.includes(searchTerm)) {
+                    document.querySelector(`#${sectionID}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    sectionFound = true;
+                    return; // Exit function if special term is matched
+                }
+            }
+
+            // Check if search term matches a section ID
+            if (!sectionFound) {
+                sections.forEach(section => {
+                    const sectionID = section.id.toLowerCase();
+
+                    if (sectionID === searchTerm) {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        sectionFound = true;
+                        return; // Exit loop if section is found
+                    }
+                });
+            }
+
+            // If no section ID match, check for item matches
+            if (!sectionFound) {
+                sections.forEach(section => {
+                    const items = section.querySelectorAll('.menu-container');
+                    let sectionContainsMatch = false;
+
+                    items.forEach(item => {
+                        const itemName = item.querySelector('.inner-text h2').textContent.trim().toLowerCase();
+
+                        if (itemName.includes(searchTerm)) {
+                            sectionContainsMatch = true;
+                            // Add class to scale item
+                            item.classList.add('scaled');
+                        }
+                    });
+
+                    if (sectionContainsMatch) {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        sectionFound = true;
+                    }
+                });
+            }
+
+            // Scroll to default section if no match is found
+            if (!sectionFound) {
+                document.querySelector('#sizzling').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
